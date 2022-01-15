@@ -14,8 +14,9 @@ namespace Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+         
             var types = Assembly.Load("Domain").GetExportedTypes().Where(x => x.IsClass && x.BaseType == typeof(BaseEntity));
-
             foreach (var type in types)
             {
                 modelBuilder.Entity(type);
