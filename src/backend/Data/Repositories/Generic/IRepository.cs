@@ -9,13 +9,13 @@ public interface IRepository<TEntity> where TEntity : BaseEntity
     TEntity Get(Expression<Func<TEntity, bool>> filter);
     Task<IEnumerable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> filter = null);
     Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> filter);
-    void Insert(TEntity entity);
-    void Insert(IEnumerable<TEntity> entity);
-    Task InsertAsync(TEntity entity);
-    Task InsertAsync(IEnumerable<TEntity> entity);
-    void Update(TEntity entity);
-    void Update(IEnumerable<TEntity> entity);
-    void Delete(TEntity entity);
-    void Delete(IEnumerable<TEntity> entity);
+    TEntity Insert(TEntity entity);
+    IEnumerable<TEntity> Insert(IEnumerable<TEntity> entity);
+    Task<TEntity> InsertAsync(TEntity entity);
+    Task<IEnumerable<TEntity>> InsertAsync(IEnumerable<TEntity> entity);
+    TEntity Update(TEntity entity);
+    IEnumerable<TEntity> Update(IEnumerable<TEntity> entity);
+    TEntity Delete(TEntity entity);
+    IEnumerable<TEntity> Delete(IEnumerable<TEntity> entity);
     IQueryable<TEntity> Table { get; }
 }

@@ -40,49 +40,57 @@ public partial class Repository<TEntity> : IRepository<TEntity> where TEntity : 
         return await _dbSet.Where(filter).ToListAsync();
     }
 
-    public void Insert(TEntity entity)
+    public TEntity Insert(TEntity entity)
     {
         _dbSet.Add(entity);
         _context.SaveChanges();
+        return entity;
     }
-    public void Insert(IEnumerable<TEntity> entity)
+    public IEnumerable<TEntity> Insert(IEnumerable<TEntity> entities)
     {
-        _dbSet.AddRange(entity);
+        _dbSet.AddRange(entities);
         _context.SaveChanges();
+        return entities;
     }
-    public async Task InsertAsync(TEntity entity)
+    public async Task<TEntity> InsertAsync(TEntity entity)
     {
         await _dbSet.AddAsync(entity);
         await _context.SaveChangesAsync();
+        return entity;
     }
-    public async Task InsertAsync(IEnumerable<TEntity> entity)
+    public async Task<IEnumerable<TEntity>> InsertAsync(IEnumerable<TEntity> entities)
     {
-        await _dbSet.AddRangeAsync(entity);
+        await _dbSet.AddRangeAsync(entities);
         await _context.SaveChangesAsync();
+        return entities;
     }
 
-    public void Update(TEntity entity)
+    public TEntity Update(TEntity entity)
     {
         _dbSet.Update(entity);
         _context.SaveChanges();
+        return entity;
     }
 
-    public void Update(IEnumerable<TEntity> entity)
+    public IEnumerable<TEntity> Update(IEnumerable<TEntity> entities)
     {
-        _dbSet.UpdateRange(entity);
+        _dbSet.UpdateRange(entities);
         _context.SaveChanges();
+        return entities;
     }
 
-    public void Delete(TEntity entity)
+    public TEntity Delete(TEntity entity)
     {
         _dbSet.Remove(entity);
         _context.SaveChanges();
+        return entity;
     }
 
-    public void Delete(IEnumerable<TEntity> entity)
+    public IEnumerable<TEntity> Delete(IEnumerable<TEntity> entities)
     {
-        _dbSet.RemoveRange(entity);
+        _dbSet.RemoveRange(entities);
         _context.SaveChanges();
+        return entities;
     }
 
     public IQueryable<TEntity> Table => _dbSet;
