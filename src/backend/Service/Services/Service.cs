@@ -26,7 +26,7 @@ public class Service<TEntity> : IService<TEntity> where TEntity : BaseEntity, ne
         return await _repository.GetAsync(filter);
     }
 
-    public IEnumerable<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
+    public IQueryable<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
     {
         return _repository.GetAll(filter);
     }
@@ -36,44 +36,47 @@ public class Service<TEntity> : IService<TEntity> where TEntity : BaseEntity, ne
         return await _repository.GetAllAsync(filter);
     }
 
-    public void Insert(TEntity entity)
+    public TEntity Insert(TEntity entity)
     {
-        _repository.Insert(entity);
+        return _repository.Insert(entity);
     }
 
-    public void Insert(IEnumerable<TEntity> entity)
+    public IEnumerable<TEntity> Insert(IEnumerable<TEntity> entities)
     {
-        _repository.Insert(entity);
+        _repository.Insert(entities);
+        return entities;
     }
 
-    public async Task InsertAsync(TEntity entity)
+    public async Task<TEntity> InsertAsync(TEntity entity)
     {
         await _repository.InsertAsync(entity);
+        return entity;
     }
 
-    public async Task InsertAsync(IEnumerable<TEntity> entity)
+    public async Task<IEnumerable<TEntity>> InsertAsync(IEnumerable<TEntity> entities)
     {
-        await _repository.InsertAsync(entity);
+        await _repository.InsertAsync(entities);
+        return entities;
     }
 
-    public void Update(TEntity entity)
+    public TEntity Update(TEntity entity)
     {
-        _repository.Update(entity);
+        return _repository.Update(entity);
     }
 
-    public void Update(IEnumerable<TEntity> entity)
+    public IEnumerable<TEntity> Update(IEnumerable<TEntity> entities)
     {
-        _repository.Update(entity);
+        return _repository.Update(entities);
     }
 
-    public void Delete(TEntity entity)
+    public TEntity Remove(TEntity entity)
     {
-        _repository.Delete(entity);
+        return _repository.Remove(entity);
     }
 
-    public void Delete(IEnumerable<TEntity> entity)
+    public IEnumerable<TEntity> Remove(IEnumerable<TEntity> entity)
     {
-        _repository.Delete(entity);
+        return _repository.Remove(entity);
     }
 
     public TEntity GetById(int Id)
@@ -84,6 +87,22 @@ public class Service<TEntity> : IService<TEntity> where TEntity : BaseEntity, ne
     public Task<TEntity> GetByIdAsync(int Id)
     {
         return GetAsync(x => x.Id == Id);
+    }
+    public Task<TEntity> UpdateAsync(TEntity entity)
+    {
+        return _repository.UpdateAsync(entity);
+    }
+    public Task<IEnumerable<TEntity>> UpdateAsync(IEnumerable<TEntity> entities)
+    {
+        return _repository.UpdateAsync(entities);
+    }
+    public Task<TEntity> RemoveAsync(TEntity entity)
+    {
+        return _repository.RemoveAsync(entity);
+    }
+    public Task<IEnumerable<TEntity>> RemoveAsync(IEnumerable<TEntity> entity)
+    {
+        return _repository.RemoveAsync(entity);
     }
 }
 

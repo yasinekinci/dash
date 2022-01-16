@@ -39,7 +39,6 @@ public partial class Repository<TEntity> : IRepository<TEntity> where TEntity : 
         }
         return await _dbSet.Where(filter).ToListAsync();
     }
-
     public TEntity Insert(TEntity entity)
     {
         _dbSet.Add(entity);
@@ -64,32 +63,52 @@ public partial class Repository<TEntity> : IRepository<TEntity> where TEntity : 
         await _context.SaveChangesAsync();
         return entities;
     }
-
     public TEntity Update(TEntity entity)
     {
         _dbSet.Update(entity);
         _context.SaveChanges();
         return entity;
     }
-
+    public async Task<TEntity> UpdateAsync(TEntity entity)
+    {
+        _dbSet.Update(entity);
+        await _context.SaveChangesAsync();
+        return entity;
+    }
     public IEnumerable<TEntity> Update(IEnumerable<TEntity> entities)
     {
         _dbSet.UpdateRange(entities);
         _context.SaveChanges();
         return entities;
     }
-
-    public TEntity Delete(TEntity entity)
+    public async Task<IEnumerable<TEntity>> UpdateAsync(IEnumerable<TEntity> entities)
+    {
+        _dbSet.UpdateRange(entities);
+        await _context.SaveChangesAsync();
+        return entities;
+    }
+    public TEntity Remove(TEntity entity)
     {
         _dbSet.Remove(entity);
         _context.SaveChanges();
         return entity;
     }
-
-    public IEnumerable<TEntity> Delete(IEnumerable<TEntity> entities)
+    public async Task<TEntity> RemoveAsync(TEntity entity)
+    {
+        _dbSet.Remove(entity);
+        await _context.SaveChangesAsync();
+        return entity;
+    }
+    public IEnumerable<TEntity> Remove(IEnumerable<TEntity> entities)
     {
         _dbSet.RemoveRange(entities);
         _context.SaveChanges();
+        return entities;
+    }
+    public async Task<IEnumerable<TEntity>> RemoveAsync(IEnumerable<TEntity> entities)
+    {
+        _dbSet.RemoveRange(entities);
+        await _context.SaveChangesAsync();
         return entities;
     }
 

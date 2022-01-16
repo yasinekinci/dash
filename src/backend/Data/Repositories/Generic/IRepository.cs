@@ -14,8 +14,12 @@ public interface IRepository<TEntity> where TEntity : BaseEntity
     Task<TEntity> InsertAsync(TEntity entity);
     Task<IEnumerable<TEntity>> InsertAsync(IEnumerable<TEntity> entity);
     TEntity Update(TEntity entity);
+    Task<TEntity> UpdateAsync(TEntity entity);
     IEnumerable<TEntity> Update(IEnumerable<TEntity> entity);
-    TEntity Delete(TEntity entity);
-    IEnumerable<TEntity> Delete(IEnumerable<TEntity> entity);
+    Task<IEnumerable<TEntity>> UpdateAsync(IEnumerable<TEntity> entity);
+    TEntity Remove(TEntity entity);
+    Task<TEntity> RemoveAsync(TEntity entity);
+    IEnumerable<TEntity> Remove(IEnumerable<TEntity> entity);
+    Task<IEnumerable<TEntity>> RemoveAsync(IEnumerable<TEntity> entity);
     IQueryable<TEntity> Table { get; }
 }
