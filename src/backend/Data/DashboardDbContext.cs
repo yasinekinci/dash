@@ -3,26 +3,24 @@ using System.Linq;
 using System.Reflection;
 using Domain;
 
-namespace Data
+namespace Data;
+public class DashboardDbContext : DbContext
 {
-    public class DashboardDbContext : DbContext
+    public DashboardDbContext(DbContextOptions<DashboardDbContext> options) : base(options)
     {
-        public DashboardDbContext(DbContextOptions<DashboardDbContext> options) : base(options)
-        {
 
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+        var types = Assembly.Load("Domain").GetExportedTypes().Where(x => x.IsClass && x.BaseType == typeof(BaseEntity));
+        foreach (var type in types)
+        {
+            modelBuilder.Entity(type);
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-         
-            var types = Assembly.Load("Domain").GetExportedTypes().Where(x => x.IsClass && x.BaseType == typeof(BaseEntity));
-            foreach (var type in types)
-            {
-                modelBuilder.Entity(type);
-            }
-
-            base.OnModelCreating(modelBuilder);
-        }
+        base.OnModelCreating(modelBuilder);
     }
 }
