@@ -1,3 +1,5 @@
+using AutoMapper;
+using Domain;
 using Microsoft.AspNetCore.Mvc;
 using Service;
 
@@ -10,16 +12,19 @@ namespace Api.Controllers
     {
         private readonly ILogger<AuthController> _logger;
         private readonly IUserService _userService;
-        public AuthController(ILogger<AuthController> logger, IUserService userService)
+        private readonly IMapper _mapper;
+        public AuthController(ILogger<AuthController> logger, IUserService userService, IMapper mapper)
         {
             _logger = logger;
             _userService = userService;
+            _mapper = mapper;
         }
 
         [HttpGet("GetAll")]
         public IActionResult GetAll()
         {
-            return Ok(_userService.GetAll());
+            var users = _userService.GetAll();
+            return Ok(_mapper.Map<IEnumerable<UserModel>>(users));
         }
     }
 }

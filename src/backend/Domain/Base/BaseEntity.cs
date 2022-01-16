@@ -19,6 +19,6 @@ public abstract partial class BaseEntity
     /// Get or sets the update date
     /// </summary>
     /// <value></value>
-    public DateTime UpdatedDate { get; set; }
+    public DateTime? UpdatedDate { get; set; }
 }
 
