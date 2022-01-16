@@ -75,5 +75,15 @@ public class Service<TEntity> : IService<TEntity> where TEntity : BaseEntity, ne
     {
         _repository.Delete(entity);
     }
+
+    public TEntity GetById(int Id)
+    {
+        return Get(x => x.Id == Id);
+    }
+
+    public Task<TEntity> GetByIdAsync(int Id)
+    {
+        return GetAsync(x => x.Id == Id);
+    }
 }
 

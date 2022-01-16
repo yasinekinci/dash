@@ -11,8 +11,10 @@ namespace Service
     {
         IEnumerable<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null);
         TEntity Get(Expression<Func<TEntity, bool>> filter);
+        TEntity GetById(int Id);
         Task<IEnumerable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> filter = null);
         Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> filter);
+        Task<TEntity> GetByIdAsync(int Id);
         void Insert(TEntity entity);
         void Insert(IEnumerable<TEntity> entity);
         Task InsertAsync(TEntity entity);
