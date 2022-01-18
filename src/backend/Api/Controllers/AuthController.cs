@@ -5,10 +5,7 @@ using Service;
 
 namespace Api.Controllers
 {
-
-    [ApiController]
-    [Route("[controller]")]
-    public class AuthController : ControllerBase
+    public class AuthController : BaseController
     {
         private readonly ILogger<AuthController> _logger;
         private readonly IUserService _userService;
