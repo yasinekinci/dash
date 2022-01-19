@@ -6,12 +6,12 @@ namespace Domain.Models.Response
     {
         [JsonIgnore]
         public int StatusCode { get; set; }
-        public T Data { get; set; }
+        public T Result { get; set; }
         public List<string> Errors { get; set; }
 
-        public static ResponseModel<T> Success(int statusCode, T data)
+        public static ResponseModel<T> Success(int statusCode, T result)
         {
-            return new ResponseModel<T> { Data = data, StatusCode = statusCode };
+            return new ResponseModel<T> { Result = result, StatusCode = statusCode };
         }
         public static ResponseModel<T> Success(int statusCode)
         {
