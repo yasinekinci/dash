@@ -21,7 +21,14 @@ namespace Api.Controllers
         public IActionResult GetAll()
         {
             var users = _userService.GetAll();
-            return Ok(_mapper.Map<IEnumerable<UserModel>>(users));
+            return CreateActionResult<IEnumerable<UserModel>>(_mapper.Map<IEnumerable<UserModel>>(users));
+        }
+
+        [HttpGet("GetAllAsync")]
+        public async Task<IActionResult> GetAllAsync()
+        {
+            var users = await _userService.GetAllAsync();
+            return CreateActionResult<IEnumerable<UserModel>>(_mapper.Map<IEnumerable<UserModel>>(users));
         }
     }
 }
