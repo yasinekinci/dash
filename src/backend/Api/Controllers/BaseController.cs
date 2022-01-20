@@ -15,7 +15,10 @@ public class BaseController : ControllerBase
         {
             case HttpStatusCode.BadRequest:
                 return BadRequest(ResponseModel<T>.Success(result, statusCode));
-
+            case HttpStatusCode.Created:
+                return Created(string.Empty, ResponseModel<T>.Success(result, statusCode));
+            case HttpStatusCode.NoContent:
+                return Ok(ResponseModel<T>.Success());
             default:
                 return Ok(ResponseModel<T>.Success(result, statusCode));
         }
