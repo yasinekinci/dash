@@ -3,7 +3,7 @@ using Domain;
 
 namespace Service;
 
-public interface IUserService : IService<User>
+public interface IUserService : IGenericService<User>
 {
     Task<IResult> GetClaimsByUserIdAsync(int userId);
 }

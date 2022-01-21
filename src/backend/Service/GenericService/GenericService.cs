@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Service;
 
-public class Service<TEntity> : IService<TEntity> where TEntity : BaseEntity, new()
+public class GenericService<TEntity> : IGenericService<TEntity> where TEntity : BaseEntity, new()
 {
     protected IRepository<TEntity> _repository;
-    public Service(IRepository<TEntity> repository)
+    public GenericService(IRepository<TEntity> repository)
     {
         _repository = repository;
     }

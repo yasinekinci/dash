@@ -7,7 +7,7 @@ using Domain.Models;
 
 namespace Service;
 
-public class UserService : Service<User>, IUserService
+public class UserService : GenericService<User>, IUserService
 {
     private readonly IUserRepository _userProductRespository;
     private readonly IMapper _mapper;
