@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 namespace Domain;
-public abstract partial class BaseEntity
+public abstract partial class BaseEntity : IEntity
 {
     /// <summary>
     /// Gets or sets the entity identifier

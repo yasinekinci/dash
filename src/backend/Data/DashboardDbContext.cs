@@ -15,7 +15,7 @@ public class DashboardDbContext : DbContext
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-        var types = Assembly.Load("Domain").GetExportedTypes().Where(x => x.IsClass && x.BaseType == typeof(BaseEntity));
+        var types = Assembly.Load("Domain").GetExportedTypes().Where(x => x.IsClass && x.BaseType == typeof(IEntity));
         foreach (var type in types)
         {
             modelBuilder.Entity(type);
