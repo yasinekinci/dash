@@ -1,8 +1,9 @@
+using Core.Utilities.Results;
 using Domain;
 
 namespace Service;
 
 public interface IUserService : IService<User>
 {
-    Task<IEnumerable<User>> GetUserAllWithOperationClaimsAsync();
+    Task<IResult> GetUserAllWithOperationClaimsAsync();
 }

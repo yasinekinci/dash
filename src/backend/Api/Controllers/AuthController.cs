@@ -35,7 +35,7 @@ namespace Api.Controllers
         public async Task<IActionResult> GetUserAllWithOperationClaimsAsync()
         {
             var users = await _userService.GetUserAllWithOperationClaimsAsync();
-            return CreateActionResult<IEnumerable<UserModel>>(_mapper.Map<IEnumerable<UserModel>>(users));
+            return users.Success ? Ok(users) : BadRequest(users.Message);
         }
     }
 }
