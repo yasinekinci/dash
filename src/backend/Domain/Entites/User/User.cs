@@ -1,6 +1,7 @@
 
 
 using System.ComponentModel.DataAnnotations.Schema;
+using Domain.Entites;
 
 namespace Domain;
 
@@ -12,4 +13,6 @@ public class User : BaseEntity
     public string PasswordSalt { get; set; }
     public string PasswordHash { get; set; }
     public bool Status { get; set; }
+
+    public ICollection<UserOperationClaim> UserOperationClaim { get; set; }
 }
