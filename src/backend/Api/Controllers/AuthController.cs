@@ -17,17 +17,24 @@ namespace Api.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("GetAll")]
+        [HttpPost("GetAll")]
         public IActionResult GetAll()
         {
             var users = _userService.GetAll();
             return CreateActionResult<IEnumerable<UserModel>>(_mapper.Map<IEnumerable<UserModel>>(users));
         }
 
-        [HttpGet("GetAllAsync")]
+        [HttpPost("GetAllAsync")]
         public async Task<IActionResult> GetAllAsync()
         {
             var users = await _userService.GetAllAsync();
+            return CreateActionResult<IEnumerable<UserModel>>(_mapper.Map<IEnumerable<UserModel>>(users));
+        }
+
+        [HttpPost("GetUserAllWithOperationClaimsAsync")]
+        public async Task<IActionResult> GetUserAllWithOperationClaimsAsync()
+        {
+            var users = await _userService.GetUserAllWithOperationClaimsAsync();
             return CreateActionResult<IEnumerable<UserModel>>(_mapper.Map<IEnumerable<UserModel>>(users));
         }
     }

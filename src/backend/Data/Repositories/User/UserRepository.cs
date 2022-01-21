@@ -8,5 +8,10 @@ namespace Data.Repositories
         public UserRepository(DashboardDbContext context) : base(context)
         {
         }
+
+        public async Task<IEnumerable<User>> GetUserAllWithOperationClaimsAsync()
+        {
+            return await _dbSet.Include(x => x.UserOperationClaim).AsNoTracking().ToListAsync();
+        }
     }
 }
