@@ -3,6 +3,7 @@ using Core.Utilities.Results;
 using Data;
 using Data.Repositories;
 using Domain;
+using Domain.Models;
 
 namespace Service;
 
@@ -16,9 +17,14 @@ public class UserService : Service<User>, IUserService
         _mapper = mapper;
     }
 
-    public async Task<IResult> GetUserAllWithOperationClaimsAsync()
+    /// <summary>
+    /// Get Claims By User Id Async
+    /// </summary>
+    /// <param name="userId"></param>
+    /// <returns></returns>
+    public async Task<IResult> GetClaimsByUserIdAsync(int userId)
     {
-        var users = await _userProductRespository.GetUserAllWithOperationClaimsAsync();
-        return new SucessDataResult<IEnumerable<UserModel>>(_mapper.Map<IEnumerable<UserModel>>(users));
+        var users = await _userProductRespository.GetClaimsByUserIdAsync(userId);
+        return new SucessDataResult<IEnumerable<OperationClaimModel>>(_mapper.Map<IEnumerable<OperationClaimModel>>(users));
     }
 }

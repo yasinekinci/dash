@@ -5,5 +5,5 @@ namespace Service;
 
 public interface IUserService : IService<User>
 {
-    Task<IResult> GetUserAllWithOperationClaimsAsync();
+    Task<IResult> GetClaimsByUserIdAsync(int userId);
 }
