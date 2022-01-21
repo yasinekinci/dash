@@ -1,8 +1,5 @@
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace Domain.Entites
 {
-    [Table("UserOperationClaims")]
     public class UserOperationClaim : IEntity
     {
         public int Id { get; set; }
@@ -10,7 +7,7 @@ namespace Domain.Entites
         public int OperationClaimId { get; set; }
 
         public User User { get; set; }
-        public OperationClaim MyProperty { get; set; }
+        public OperationClaim OperationClaim { get; set; }
 
     }
 }
