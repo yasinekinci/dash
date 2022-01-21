@@ -1,4 +1,5 @@
 using AutoMapper;
+using Core.Domain;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
 using Service;

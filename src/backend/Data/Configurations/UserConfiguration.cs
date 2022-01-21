@@ -1,7 +1,7 @@
 
 using System;
+using Core.Domain;
 using Domain;
-using Domain.Entites;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -39,7 +39,7 @@ public class UserOperationClaimConfiguration : IEntityTypeConfiguration<UserOper
     {
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id).UseIdentityColumn();
-     
+
         builder.ToTable("UserOperationClaims");
     }
 }

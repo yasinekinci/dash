@@ -1,9 +1,8 @@
 using AutoMapper;
+using Core.Domain;
 using Core.Utilities.Results;
 using Data;
 using Data.Repositories;
-using Domain;
-using Domain.Models;
 
 namespace Service;
 

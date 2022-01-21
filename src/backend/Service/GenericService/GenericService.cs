@@ -1,6 +1,6 @@
 
+using Core.Domain;
 using Data;
-using Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;

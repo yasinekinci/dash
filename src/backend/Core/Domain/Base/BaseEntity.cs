@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-namespace Domain;
+namespace Core.Domain;
 public abstract partial class BaseEntity : IEntity
 {
     /// <summary>

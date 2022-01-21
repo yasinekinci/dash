@@ -1,5 +1,5 @@
+using Core.Domain;
 using Core.Utilities.Results;
-using Domain;
 
 namespace Service;
 

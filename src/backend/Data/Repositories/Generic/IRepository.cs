@@ -1,6 +1,5 @@
 using System.Linq.Expressions;
-using Domain;
-
+using Core.Domain;
 namespace Data;
 
 public interface IRepository<TEntity> where TEntity : BaseEntity

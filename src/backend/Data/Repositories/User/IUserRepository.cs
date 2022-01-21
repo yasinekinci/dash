@@ -1,5 +1,4 @@
-using Domain;
-using Domain.Entites;
+using Core.Domain;
 
 namespace Data.Repositories
 {

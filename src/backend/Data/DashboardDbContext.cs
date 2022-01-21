@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Reflection;
-using Domain;
+using Core.Domain;
 
 namespace Data;
 public class DashboardDbContext : DbContext
