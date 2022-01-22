@@ -31,12 +31,6 @@ namespace Api.Controllers
             var users = await _userService.GetAllAsync();
             return CreateActionResult<IEnumerable<UserModel>>(_mapper.Map<IEnumerable<UserModel>>(users));
         }
-
-        [HttpPost("GetClaimsByUserIdAsync")]
-        public async Task<IActionResult> GetClaimsByUserIdAsync(int userId)
-        {
-            var users = await _userService.GetClaimsByUserIdAsync(userId);
-            return users.Success ? Ok(users) : BadRequest(users.Message);
-        }
+     
     }
 }
