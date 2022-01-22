@@ -1,3 +1,4 @@
+using Core.Utilities.Security.Jwt;
 using Data;
 using Data.Repositories;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +14,7 @@ public static class ServiceModule
         services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IAuthService, AuthService>();
+        services.AddScoped<ITokenHelper,JwtTokenHelper>();
         return services;
     }
 }
