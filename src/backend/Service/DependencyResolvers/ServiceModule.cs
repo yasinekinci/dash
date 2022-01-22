@@ -12,6 +12,7 @@ public static class ServiceModule
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
         services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IAuthService, AuthService>();
         return services;
     }
 }
