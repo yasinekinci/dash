@@ -7,5 +7,5 @@ public class UserOperationClaimModel : IModel
     public int OperationClaimId { get; set; }
 
     public UserModel User { get; set; }
-    public OperationClaimModel MyProperty { get; set; }
+    public OperationClaimModel OperationClaim { get; set; }
 }
