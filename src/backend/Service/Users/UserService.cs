@@ -21,9 +21,9 @@ public class UserService : GenericService<User>, IUserService
     /// </summary>
     /// <param name="userId"></param>
     /// <returns></returns>
-    public async Task<IResult> GetClaimsByUserIdAsync(int userId)
+    public IEnumerable<OperationClaim> GetClaims(User user)
     {
-        var users = await _userProductRespository.GetClaimsByUserIdAsync(userId);
-        return new SucessDataResult<IEnumerable<OperationClaimModel>>(_mapper.Map<IEnumerable<OperationClaimModel>>(users));
+        var users = _userProductRespository.GetClaims(user);
+        return users;
     }
 }

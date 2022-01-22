@@ -5,5 +5,5 @@ namespace Service;
 
 public interface IUserService : IGenericService<User>
 {
-    Task<IResult> GetClaimsByUserIdAsync(int userId);
+    IEnumerable<OperationClaim> GetClaims(User user);
 }
