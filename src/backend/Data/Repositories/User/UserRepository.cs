@@ -14,16 +14,15 @@ namespace Data.Repositories
             return await _dbSet.Include(x => x.UserOperationClaim).AsNoTracking().ToListAsync();
         }
 
-        public async Task<IEnumerable<OperationClaim>> GetClaimsByUserIdAsync(int userId)
+        public IEnumerable<OperationClaim> GetClaims(User user)
         {
-            var result = await (from operationClaim in _context.Set<OperationClaim>()
-                                join userOperationClaim in _context.Set<UserOperationClaim>()
-                                 on operationClaim.Id equals userOperationClaim.OperationClaimId
-                                where userOperationClaim.Id == userId
-                                select operationClaim).ToListAsync();
+            var result = from operationClaim in _context.Set<OperationClaim>()
+                         join userOperationClaim in _context.Set<UserOperationClaim>()
+                          on operationClaim.Id equals userOperationClaim.OperationClaimId
+                         where userOperationClaim.Id == user.Id
+                         select operationClaim;
 
             return result;
         }
-
     }
 }
