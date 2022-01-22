@@ -4,6 +4,7 @@ using Core.Utilities.Hashing;
 using Core.Utilities.Results;
 using Core.Utilities.Results.Error;
 using Core.Utilities.Security.Jwt;
+using Domain.Models.Users;
 
 namespace Service
 {
@@ -19,15 +20,15 @@ namespace Service
             _mapper = mapper;
         }
 
-        public IDataResult<UserModel> Login(UserModel user)
+        public IDataResult<UserModel> Login(UserForLoginModel userForLoginModel)
         {
-            var userToCheck = _userService.Get(x => x.Email == user.Email);
+            var userToCheck = _userService.Get(x => x.Email == userForLoginModel.Email);
             if (userToCheck == null)
             {
                 return new ErrorDataResult<UserModel>("User not fould");
             }
 
-            if (!HashingHelper.VerifyPasswordHash(user.Password, user.PasswordHash, user.PasswordSalt))
+            if (!HashingHelper.VerifyPasswordHash(userForLoginModel.Password, userToCheck.PasswordHash, userToCheck.PasswordSalt))
             {
                 return new ErrorDataResult<UserModel>("Password is incorrect");
             }
@@ -35,37 +36,32 @@ namespace Service
             return new SucessDataResult<UserModel>(_mapper.Map<UserModel>(userToCheck), "Login is successful");
         }
 
-        public IDataResult<UserModel> Register(UserModel user)
+        public IDataResult<UserModel> Register(UserForRegisterModel userForRegisterModel)
         {
-            var userExists = UserExists(user.Email);
-            if (!userExists.Success)
+            byte[] passwordHash, passwordSalt;
+            HashingHelper.CreatePasswordHash(userForRegisterModel.Password, out passwordHash, out passwordSalt);
+
+            var newUser = new User
             {
-                byte[] passwordHash, passwordSalt;
-                HashingHelper.CreatePasswordHash(user.Password, out passwordHash, out passwordSalt);
+                FirstName = userForRegisterModel.FirstName,
+                LastName = userForRegisterModel.LastName,
+                Email = userForRegisterModel.Email,
+                PasswordHash = passwordHash,
+                PasswordSalt = passwordSalt,
+                Status = true
+            };
+            var result = _userService.Insert(newUser);
 
-                var newUser = new User
-                {
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
-                    Email = user.Email,
-                    PasswordHash = passwordHash,
-                    PasswordSalt = passwordSalt,
-                    Status = true
-                };
-                var result = _userService.Insert(newUser);
-
-                return new SucessDataResult<UserModel>(_mapper.Map<UserModel>(result), "User created succesful");
-            }
-            return new ErrorDataResult<UserModel>(user, userExists.Message);
+            return new SucessDataResult<UserModel>(_mapper.Map<UserModel>(result), "User created succesful");
         }
 
         public IResult UserExists(string email)
         {
             if (_userService.Get(c => c.Email == email) != null)
             {
-                return new SuccessResult("User already exists");
+                return new ErrorResult("User already exists");
             }
-            return new ErrorResult("User not fould");
+            return new SuccessResult("User not fould");
         }
 
         public IDataResult<AccessToken> CreateAccessToken(UserModel user)

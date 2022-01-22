@@ -1,6 +1,7 @@
 using AutoMapper;
 using Core.Domain;
 using Domain;
+using Domain.Models.Users;
 using Microsoft.AspNetCore.Mvc;
 using Service;
 
@@ -15,7 +16,7 @@ namespace Api.Controllers
         }
 
         [HttpPost("Login")]
-        public IActionResult Login(UserModel user)
+        public IActionResult Login(UserForLoginModel user)
         {
             var userToLogin = _authService.Login(user);
             if (!userToLogin.Success)
@@ -31,15 +32,20 @@ namespace Api.Controllers
         }
 
         [HttpPost("Register")]
-        public IActionResult Register(UserModel user)
+        public IActionResult Register(UserForRegisterModel userForRegisterModel)
         {
-            var register = _authService.Register(user);
-            if (register.Success)
+            var userExists = _authService.UserExists(userForRegisterModel.Email);
+            if (!userExists.Success)
+            {
+                return BadRequest(userExists);
+            }
+            var register = _authService.Register(userForRegisterModel);
+            if (!register.Success)
             {
                 return BadRequest(register);
             }
             var result = _authService.CreateAccessToken(register.Data);
-            if (result.Success)
+            if (!result.Success)
             {
                 return Ok(result);
             }
