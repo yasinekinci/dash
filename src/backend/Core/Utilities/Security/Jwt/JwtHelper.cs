@@ -9,12 +9,12 @@ using Core.Extensions;
 
 namespace Core.Utilities.Security.Jwt
 {
-    public class JwtHelper : ITokenHelper
+    public class JwtTokenHelper : ITokenHelper
     {
         private readonly IConfiguration Configuration;
         private TokenOptions _tokenOptions;
         private DateTime _accessTokenExpiration;
-        public JwtHelper(IConfiguration configuration)
+        public JwtTokenHelper(IConfiguration configuration)
         {
             Configuration = configuration;
             _tokenOptions = Configuration.GetValue<TokenOptions>("TokenOptions");
