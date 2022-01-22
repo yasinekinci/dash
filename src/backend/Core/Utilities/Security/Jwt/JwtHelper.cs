@@ -12,12 +12,12 @@ namespace Core.Utilities.Security.Jwt
     public class JwtTokenHelper : ITokenHelper
     {
         private readonly IConfiguration Configuration;
-        private TokenOptions _tokenOptions;
+        private TokenOptions _tokenOptions = new TokenOptions();
         private DateTime _accessTokenExpiration;
         public JwtTokenHelper(IConfiguration configuration)
         {
             Configuration = configuration;
-            _tokenOptions = Configuration.GetValue<TokenOptions>("TokenOptions");
+            Configuration.GetSection("TokenOptions").Bind(_tokenOptions);
             _accessTokenExpiration = DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration);
         }
 
