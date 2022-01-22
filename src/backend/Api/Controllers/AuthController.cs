@@ -8,29 +8,43 @@ namespace Api.Controllers
 {
     public class AuthController : BaseController
     {
-        private readonly ILogger<AuthController> _logger;
-        private readonly IUserService _userService;
-        private readonly IMapper _mapper;
-        public AuthController(ILogger<AuthController> logger, IUserService userService, IMapper mapper)
+        private readonly IAuthService _authService;
+        public AuthController(IAuthService authService)
         {
-            _logger = logger;
-            _userService = userService;
-            _mapper = mapper;
+            _authService = authService;
         }
 
-        [HttpPost("GetAll")]
-        public IActionResult GetAll()
+        [HttpPost("Login")]
+        public IActionResult Login(UserModel user)
         {
-            var users = _userService.GetAll();
-            return CreateActionResult<IEnumerable<UserModel>>(_mapper.Map<IEnumerable<UserModel>>(users));
+            var userToLogin = _authService.Login(user);
+            if (!userToLogin.Success)
+            {
+                return BadRequest(userToLogin);
+            }
+            var token = _authService.CreateAccessToken(userToLogin.Data);
+            if (token.Success)
+            {
+                return Ok(token);
+            }
+            return BadRequest(token);
         }
 
-        [HttpPost("GetAllAsync")]
-        public async Task<IActionResult> GetAllAsync()
+        [HttpPost("Register")]
+        public IActionResult Register(UserModel user)
         {
-            var users = await _userService.GetAllAsync();
-            return CreateActionResult<IEnumerable<UserModel>>(_mapper.Map<IEnumerable<UserModel>>(users));
+            var register = _authService.Register(user);
+            if (register.Success)
+            {
+                return BadRequest(register);
+            }
+            var result = _authService.CreateAccessToken(register.Data);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
-     
+
     }
 }

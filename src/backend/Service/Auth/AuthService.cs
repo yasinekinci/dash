@@ -35,12 +35,13 @@ namespace Service
             return new SucessDataResult<UserModel>(_mapper.Map<UserModel>(userToCheck), "Login is successful");
         }
 
-        public IDataResult<UserModel> Register(UserModel user, string password)
+        public IDataResult<UserModel> Register(UserModel user)
         {
-            if (_userService.Get(c => c.Email == user.Email) == null)
+            var userExists = UserExists(user.Email);
+            if (!userExists.Success)
             {
                 byte[] passwordHash, passwordSalt;
-                HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
+                HashingHelper.CreatePasswordHash(user.Password, out passwordHash, out passwordSalt);
 
                 var newUser = new User
                 {
@@ -55,8 +56,7 @@ namespace Service
 
                 return new SucessDataResult<UserModel>(_mapper.Map<UserModel>(result), "User created succesful");
             }
-            return new ErrorDataResult<UserModel>(user, "The user is already registered.");
-
+            return new ErrorDataResult<UserModel>(user, userExists.Message);
         }
 
         public IResult UserExists(string email)
@@ -70,7 +70,7 @@ namespace Service
 
         public IDataResult<AccessToken> CreateAccessToken(UserModel user)
         {
-            var userInfo = _mapper.Map<User>(user);//user get yapılabilir.
+            var userInfo = _mapper.Map<User>(user);
             var claims = _userService.GetClaims(userInfo);
             var accessToken = _tokenHelper.CreateToken(userInfo, claims.ToList());
             return new SucessDataResult<AccessToken>(accessToken, "Access Token Created");
