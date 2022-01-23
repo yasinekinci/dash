@@ -1,7 +1,5 @@
 
-using System;
 using Core.Domain;
-using Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
