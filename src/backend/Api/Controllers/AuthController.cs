@@ -1,7 +1,5 @@
-using AutoMapper;
-using Core.Domain;
-using Domain;
 using Domain.Models.Users;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service;
 
@@ -15,6 +13,7 @@ namespace Api.Controllers
             _authService = authService;
         }
 
+        [AllowAnonymous]
         [HttpPost("Login")]
         public IActionResult Login(UserForLoginModel user)
         {
@@ -31,6 +30,7 @@ namespace Api.Controllers
             return BadRequest(token);
         }
 
+        [AllowAnonymous]
         [HttpPost("Register")]
         public IActionResult Register(UserForRegisterModel userForRegisterModel)
         {
