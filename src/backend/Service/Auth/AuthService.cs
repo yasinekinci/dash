@@ -2,7 +2,6 @@ using AutoMapper;
 using Core.Domain;
 using Core.Utilities.Hashing;
 using Core.Utilities.Results;
-using Core.Utilities.Results.Error;
 using Core.Utilities.Security.Jwt;
 using Domain.Models.Users;
 
@@ -33,7 +32,7 @@ namespace Service
                 return new ErrorDataResult<UserModel>("Password is incorrect");
             }
 
-            return new SucessDataResult<UserModel>(_mapper.Map<UserModel>(userToCheck), "Login is successful");
+            return new SuccessDataResult<UserModel>(_mapper.Map<UserModel>(userToCheck), "Login is successful");
         }
 
         public IDataResult<UserModel> Register(UserForRegisterModel userForRegisterModel)
@@ -52,7 +51,7 @@ namespace Service
             };
             var result = _userService.Insert(newUser);
 
-            return new SucessDataResult<UserModel>(_mapper.Map<UserModel>(result), "User created succesful");
+            return new SuccessDataResult<UserModel>(_mapper.Map<UserModel>(result), "User created succesful");
         }
 
         public IResult UserExists(string email)
@@ -69,7 +68,7 @@ namespace Service
             var userInfo = _mapper.Map<User>(user);
             var claims = _userService.GetClaims(userInfo);
             var accessToken = _tokenHelper.CreateToken(userInfo, claims.ToList());
-            return new SucessDataResult<AccessToken>(accessToken, "Access Token Created");
+            return new SuccessDataResult<AccessToken>(accessToken, "Access Token Created");
         }
     }
 }

@@ -1,4 +1,4 @@
-namespace Core.Utilities.Results.Error
+namespace Core.Utilities.Results
 {
     public class ErrorDataResult<T> : DataResult<T>
     {
