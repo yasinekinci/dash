@@ -1,10 +1,12 @@
 using System.Reflection;
 using System.Text.Json.Serialization;
+using Core.Filters;
 using Core.Utilities.Security.Encyption;
 using Core.Utilities.Security.Jwt;
 using Data;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Service;
@@ -13,10 +15,18 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers().AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<ProductModelValidator>()).AddJsonOptions(options =>
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add(new ValideFilterAttribute());
+}).AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<ProductModelValidator>()).AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
     options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+});
+
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.SuppressModelStateInvalidFilter = true;
 });
 
 TokenOptions _tokenOptions = new TokenOptions();
