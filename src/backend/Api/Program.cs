@@ -1,5 +1,6 @@
 using System.Reflection;
 using System.Text.Json.Serialization;
+using Api.Middlewares;
 using Core.Filters;
 using Core.Utilities.Security.Encyption;
 using Core.Utilities.Security.Jwt;
@@ -99,7 +100,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCustomException();
 app.UseAuthentication();
 app.UseAuthorization();
 
