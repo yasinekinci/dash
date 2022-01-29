@@ -13,7 +13,8 @@ Technicial Features :
 | [.net6](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-6.0)  | [ReactJs](https://reactjs.org/) |
 | EntityFramework | Redux |
 | Automapper | React Router Dom |
-| NUnit Test | [Ant Design](https://ant.design/) |
+| Autofac | [Ant Design](https://ant.design/) |
+| NUnit Test |  |
 | Swagger |  |
 
 Design Pattern :

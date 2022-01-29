@@ -2,6 +2,9 @@ using System.Reflection;
 using System.Text.Json.Serialization;
 using Api.Filters;
 using Api.Middlewares;
+using Api.Modules;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Core.Filters;
 using Core.Utilities.Security.Encyption;
 using Core.Utilities.Security.Jwt;
@@ -50,8 +53,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     };
 });
 
-builder.Services.LoadServiceModule();
-
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -92,6 +93,9 @@ builder.Services.AddDbContext<DashboardDbContext>(options =>
         options.MigrationsAssembly(Assembly.GetAssembly(typeof(DashboardDbContext)).GetName().Name);
     });
 });
+
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder => containerBuilder.RegisterModule(new RepoServiceModule()));
 
 var app = builder.Build();
 
