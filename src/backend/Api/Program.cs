@@ -1,5 +1,6 @@
 using System.Reflection;
 using System.Text.Json.Serialization;
+using Api.Filters;
 using Api.Middlewares;
 using Core.Filters;
 using Core.Utilities.Security.Encyption;
@@ -17,6 +18,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddScoped(typeof(NotFoundFilter<>));
 builder.Services.AddControllers(options =>
 {
     options.Filters.Add(new ValideFilterAttribute());
