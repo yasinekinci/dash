@@ -10,8 +10,8 @@ namespace Service;
 
 public class GenericService<TEntity> : IGenericService<TEntity> where TEntity : BaseEntity, new()
 {
-    protected IRepository<TEntity> _repository;
-    public GenericService(IRepository<TEntity> repository)
+    protected IGenericRepository<TEntity> _repository;
+    public GenericService(IGenericRepository<TEntity> repository)
     {
         _repository = repository;
     }

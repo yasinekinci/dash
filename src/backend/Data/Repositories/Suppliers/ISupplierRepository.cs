@@ -2,7 +2,7 @@ using Domain.Entites;
 
 namespace Data.Repositories
 {
-    public interface ISupplierRepository : IRepository<Supplier>
+    public interface ISupplierRepository : IGenericRepository<Supplier>
     {
 
     }

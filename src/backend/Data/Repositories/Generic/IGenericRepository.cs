@@ -2,7 +2,7 @@ using System.Linq.Expressions;
 using Core.Domain;
 namespace Data;
 
-public interface IRepository<TEntity> where TEntity : BaseEntity
+public interface IGenericRepository<TEntity> where TEntity : BaseEntity
 {
     IQueryable<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null);
     TEntity Get(Expression<Func<TEntity, bool>> filter);

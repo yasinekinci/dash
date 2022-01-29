@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace Data;
-public partial class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
+public partial class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : BaseEntity
 {
     public readonly DbContext _context;
     public readonly DbSet<TEntity> _dbSet;
 
-    public Repository(DashboardDbContext context)
+    public GenericRepository(DashboardDbContext context)
     {
         _context = context;
         _dbSet = context.Set<TEntity>();
