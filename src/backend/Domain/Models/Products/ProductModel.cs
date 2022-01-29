@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Core.Domain;
 
 namespace Domain.Models
@@ -14,7 +15,9 @@ namespace Domain.Models
         public int ReorderLevel { get; set; }
         public bool Discontinued { get; set; }
 
+        [JsonIgnore]
         public SupplierModel Supplier { get; set; }
+        [JsonIgnore]
         public CategoryModel Category { get; set; }
 
     }

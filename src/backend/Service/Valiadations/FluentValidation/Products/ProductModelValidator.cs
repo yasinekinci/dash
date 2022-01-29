@@ -2,7 +2,7 @@ using System.Data;
 using Domain.Models;
 using FluentValidation;
 
-namespace Service
+namespace Service.Valiadations.FluentValidation
 {
     public class ProductModelValidator : AbstractValidator<ProductModel>
     {

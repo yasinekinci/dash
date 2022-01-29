@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Service;
+using Service.Valiadations.FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 
