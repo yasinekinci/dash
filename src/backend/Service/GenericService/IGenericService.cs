@@ -7,7 +7,7 @@ using Core.Domain;
 
 namespace Service;
 
-public interface IGenericService<TEntity> where TEntity : BaseEntity, new()
+public interface IGenericService<TEntity> where TEntity : BaseEntity
 {
     IQueryable<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null);
     TEntity Get(Expression<Func<TEntity, bool>> filter);
