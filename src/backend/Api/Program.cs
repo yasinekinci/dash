@@ -5,7 +5,6 @@ using Api.Middlewares;
 using Api.Modules;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using Core.Filters;
 using Core.Utilities.Security.Encyption;
 using Core.Utilities.Security.Jwt;
 using Data;

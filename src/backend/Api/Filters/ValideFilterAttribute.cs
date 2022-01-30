@@ -2,7 +2,7 @@ using Core.Utilities.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Core.Filters
+namespace Api.Filters
 {
     public class ValideFilterAttribute : ActionFilterAttribute
     {
