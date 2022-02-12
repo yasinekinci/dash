@@ -14,7 +14,7 @@ Technicial Features :
 | EntityFramework | Redux |
 | Automapper | React Router Dom |
 | Autofac | [Ant Design](https://ant.design/) |
-| NUnit Test |  |
+| NUnit Test | Storybook |
 | Swagger |  |
 
 Design Pattern :
