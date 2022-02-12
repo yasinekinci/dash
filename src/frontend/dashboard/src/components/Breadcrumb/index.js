@@ -1,7 +1,7 @@
 import React from 'react'
 import { Breadcrumb } from 'antd';
 import { useLocation } from 'react-router-dom'
-import { capitalizeFirstLetter } from '../../utils/helper'
+import { capitalizeFirstLetter } from 'utils/helper'
 
 const BreadcrumbComponent = ({ style }) => {
     const history = useLocation();

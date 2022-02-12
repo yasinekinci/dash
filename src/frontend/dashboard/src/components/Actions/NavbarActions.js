@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { SearchOutlined, AppstoreFilled, UserOutlined } from '@ant-design/icons';
 import { Tooltip, Button } from 'antd';
-import Search from '../Search';
-import NotificationButton from './NotificationButton';
+import Search from 'components/Search';
+import NotificationButton from 'components/Actions/NotificationButton';
 
 const NavbarActions = ({ searchOnSelect, routes }) => {
     const [searchIsVisible, setSearchIsVisible] = useState(false);

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Menu, Dropdown, Button, Row, Col, Space, Typography } from 'antd';
 import { EllipsisOutlined } from '@ant-design/icons';
-import BreadcrumbComponent from '../Breadcrumb';
-import Icons from '../Icons';
-import proxyExecute from '../../proxy';
+import BreadcrumbComponent from 'components/Breadcrumb';
+import Icons from 'components/Icons';
+import proxyExecute from 'proxy';
 var _mapValues = require('lodash/mapValues');
 var _groupBy = require('lodash/groupBy');
 var _omit = require('lodash/omit');

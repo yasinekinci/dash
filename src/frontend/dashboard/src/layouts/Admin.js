@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Switch, Route, useHistory, Redirect } from 'react-router-dom'
 import { Tabs, Layout } from 'antd';
 import './admin.css';
-import { Sidebar, Footer, Icons, NavbarActions } from '../components'
-import Base from '../pages/base'
-import { factoryForPage } from '../utils/factory'
-import { setPages, setActiveTabId, setInitialValues, addNewPage, getRoutes } from '../redux/slices/admin';
+import { Sidebar, Footer, Icons, NavbarActions } from 'components'
+import Base from 'pages/base'
+import { factoryForPage } from 'utils/factory'
+import { setPages, setActiveTabId, setInitialValues, addNewPage, getRoutes } from 'redux/slices/admin';
 
 var createUniqueId = require('lodash/uniqueId');
 

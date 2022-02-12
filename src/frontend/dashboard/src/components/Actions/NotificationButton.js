@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import proxyExecute from '../../proxy';
+import proxyExecute from 'proxy';
 import './notificationButton.css'
 import { NotificationOutlined, DeleteOutlined, EllipsisOutlined } from '@ant-design/icons';
 import { Button, Badge, Popover, Card, Tooltip, List, Avatar, Typography } from 'antd';
