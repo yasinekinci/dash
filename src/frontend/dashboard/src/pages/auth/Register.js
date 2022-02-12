@@ -2,7 +2,7 @@ import { Row, Form, Input, Button, Checkbox, Typography } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { createUser } from '../../redux/slices/user';
+import { createUser } from 'redux/slices/user';
 
 const Register = () => {
     const dispatch = useDispatch();

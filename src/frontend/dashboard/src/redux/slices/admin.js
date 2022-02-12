@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import proxyExecute from '../../proxy';
+import proxyExecute from 'proxy';
 
 export const getRoutes = createAsyncThunk('/api/getRoutes', async () => {
     return proxyExecute({ method: "routes" });

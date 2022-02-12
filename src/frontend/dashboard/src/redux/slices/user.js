@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import proxyExecute from '../../proxy';
+import proxyExecute from 'proxy';
 import { notification } from 'antd';
 
 export const createUser = createAsyncThunk('createUser', async (variables) => {

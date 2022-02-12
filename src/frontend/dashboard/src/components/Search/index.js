@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
 import { AutoComplete } from 'antd';
-import cloneDeep from 'lodash.clonedeep';
+// import cloneDeep from 'lodash.clonedeep';
 
 const Search = ({ routes, onSelect: pOnSelect, isVisible }) => {
     const [searchWidth, setSearchWidth] = useState(window.innerWidth / 3);
 
     const onSelect = (value, data) => {
-        pOnSelect && pOnSelect(cloneDeep(data));
+        pOnSelect && pOnSelect(data);
     };
 
     const routeFilter = () => {

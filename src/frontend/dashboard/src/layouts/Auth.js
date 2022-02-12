@@ -1,10 +1,10 @@
 import React from 'react'
 import { Layout, Col, Row } from 'antd';
 import { Switch, Route, Redirect } from 'react-router-dom'
-import Login from '../pages/auth/Login'
-import Register from '../pages/auth/Register'
-import Forgot from '../pages/auth/Forgot'
-import '../pages/auth/auth.css'
+import Login from 'pages/auth/Login'
+import Register from 'pages/auth/Register'
+import Forgot from 'pages/auth/Forgot'
+import 'pages/auth/auth.css'
 
 const Auth = () => {
     return (
