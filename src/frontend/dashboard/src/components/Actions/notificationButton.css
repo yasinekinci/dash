@@ -1,0 +1,11 @@
+#notificationPopover .ant-popover-inner-content {
+  padding: 0 !important;
+}
+
+#notificationPopover .ant-card-body {
+  padding: 10px !important;
+}
+
+#notificationPopover .ant-tabs-nav-list {
+  margin-right: 10px !important;
+}
