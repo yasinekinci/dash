@@ -1,8 +1,6 @@
-import 'antd/dist/antd.css';
 import { Button } from "antd";
 
 export const getStaticProps = async (context) => {
-
   return {
     props: {
       myNum: 55
@@ -11,5 +9,5 @@ export const getStaticProps = async (context) => {
 }
 
 export default function Home(props) {
-  return <Button>Hi {props.myNum}</Button>;
+  return <Button type="primary">Hi {props.myNum} asdasd asd asd</Button>;
 }
