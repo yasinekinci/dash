@@ -1,9 +1,9 @@
-function App() {
+import ThemeConfig from './theme/index';
+
+export default function App() {
   return (
-    <div>
-      Dashboard
-    </div>
+    <ThemeConfig>
+      <div>Dashboard</div>
+    </ThemeConfig>
   );
 }
-
-export default App;
