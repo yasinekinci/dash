@@ -1,21 +1,17 @@
+import { useSelector } from 'react-redux';
 import { createTheme, StyledEngineProvider, ThemeProvider, CssBaseline } from '@mui/material';
-import { useMemo, useState } from 'react';
 import componentsOverride from './overrides';
 
 export default function ThemeConfig({ children }) {
 
-  const [mode, setMode] = useState("dark");
+  const { mode } = useSelector(state => state.theme);
 
-  const themeOptions = useMemo(
-    () => ({
-      palette: {
-        mode: mode
-      }    
-    }),
-    []
-  );
-
-  const theme = createTheme(themeOptions);
+  const theme = createTheme({
+    palette: {
+      mode: mode
+    }
+  });
+  
   theme.components = componentsOverride(theme);
 
   return (

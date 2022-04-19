@@ -1,8 +1,18 @@
 import { List, ListItem, ListItemButton, ListItemIcon, ListItemText, Switch } from '@mui/material'
 import { Home, Article, Group, Storefront, Person, Settings, AccountBox, ModeNight } from '@mui/icons-material';
 import { Box } from '@mui/system'
+import { useSelector, useDispatch } from 'react-redux';
+import { setMode } from 'redux/slices/theme';
 
 const Sidebar = () => {
+
+  const { mode } = useSelector(state => state.theme);
+  const dispatch = useDispatch();
+
+  const handleChange = (event) => {
+    dispatch(setMode(event.target.checked ? "dark" : "light"));
+  }
+
   return (
     <Box flex={1} p={2} sx={{ display: { xs: "none", sm: "block" } }}>
       <Box position={"fixed"}>
@@ -68,7 +78,7 @@ const Sidebar = () => {
               <ListItemIcon>
                 <ModeNight />
               </ListItemIcon>
-              <Switch />
+              <Switch checked={mode === "dark"} onChange={handleChange} />
             </ListItemButton>
           </ListItem>
         </List>
