@@ -1,17 +1,22 @@
 import { useSelector } from 'react-redux';
-import { createTheme, StyledEngineProvider, ThemeProvider, CssBaseline } from '@mui/material';
+import { createTheme, StyledEngineProvider, ThemeProvider, CssBaseline, useMediaQuery } from '@mui/material';
 import componentsOverride from './overrides';
+import { useMemo } from 'react';
 
 export default function ThemeConfig({ children }) {
 
   const { mode } = useSelector(state => state.theme);
 
-  const theme = createTheme({
-    palette: {
-      mode: mode
-    }
-  });
-  
+  const theme = useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode: mode,
+        },
+      }),
+    [mode],
+  );
+
   theme.components = componentsOverride(theme);
 
   return (
