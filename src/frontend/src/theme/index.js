@@ -1,11 +1,16 @@
 import { createTheme, StyledEngineProvider, ThemeProvider, CssBaseline } from '@mui/material';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import componentsOverride from './overrides';
 
 export default function ThemeConfig({ children }) {
+
+  const [mode, setMode] = useState("dark");
+
   const themeOptions = useMemo(
     () => ({
-      shape: { borderRadius: 8 }
+      palette: {
+        mode: mode
+      }    
     }),
     []
   );
