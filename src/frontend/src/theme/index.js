@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { createTheme, StyledEngineProvider, ThemeProvider, CssBaseline, useMediaQuery } from '@mui/material';
+import { createTheme, StyledEngineProvider, ThemeProvider, CssBaseline } from '@mui/material';
 import componentsOverride from './overrides';
 import { useMemo } from 'react';
 
@@ -11,8 +11,8 @@ export default function ThemeConfig({ children }) {
     () =>
       createTheme({
         palette: {
-          mode: mode,
-        },
+          mode: mode
+        }
       }),
     [mode],
   );

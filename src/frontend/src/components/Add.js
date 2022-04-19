@@ -25,8 +25,8 @@ const Add = () => {
     return (
         <>
             <Tooltip title="Add" sx={{ position: "fixed", bottom: 20, left: { xs: "calc(50% - 25px)", md: 30 } }}>
-                <Fab color="primary" aria-label="add">
-                    <AddIcon onClick={handleOpen} />
+                <Fab color="primary" aria-label="add" onClick={handleOpen}>
+                    <AddIcon />
                 </Fab>
             </Tooltip>
 
@@ -62,7 +62,6 @@ const Add = () => {
                     <ButtonGroup fullWidth variant="contained" aria-label="outlined primary button group">
                         <Button>Post</Button>
                         <Button sx={{ width: "100px" }}><DateRange /></Button>
-
                     </ButtonGroup>
                 </Box>
             </StyledModal>
