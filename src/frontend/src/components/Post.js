@@ -1,4 +1,4 @@
-import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, Checkbox, Collapse, IconButton, Typography } from '@mui/material'
+import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, Checkbox, IconButton, Typography } from '@mui/material'
 import { MoreVert, Favorite, FavoriteBorder, Share } from '@mui/icons-material';
 
 const Post = () => {

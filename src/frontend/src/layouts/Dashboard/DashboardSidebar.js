@@ -3,8 +3,9 @@ import { Home, Article, Group, Storefront, Person, Settings, AccountBox, ModeNig
 import { Box } from '@mui/system'
 import { useSelector, useDispatch } from 'react-redux';
 import { setMode } from 'redux/slices/theme';
+import { Scrollbar } from 'components';
 
-const Sidebar = () => {
+const DashboardSidebar = () => {
 
   const { mode } = useSelector(state => state.theme);
   const dispatch = useDispatch();
@@ -14,8 +15,16 @@ const Sidebar = () => {
   }
 
   return (
-    <Box flex={1} p={2} sx={{ display: { xs: "none", sm: "block" } }}>
-      <Box position={"fixed"}>
+    <Scrollbar
+      sx={{
+        height: 1,
+        '& .simplebar-content': {
+          height: 1,
+          display: 'flex',
+          flexDirection: 'column'
+        }
+      }}>
+      <Box>
         <List>
           <ListItem disablePadding>
             <ListItemButton href="#home">
@@ -83,8 +92,8 @@ const Sidebar = () => {
           </ListItem>
         </List>
       </Box>
-    </Box>
+    </Scrollbar>
   )
 }
 
-export default Sidebar
+export default DashboardSidebar

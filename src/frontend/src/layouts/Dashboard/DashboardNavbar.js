@@ -4,6 +4,8 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import { Logout, Mail, Notifications, PersonAdd, Settings } from '@mui/icons-material';
 import React from 'react';
 import { Box } from '@mui/system';
+import { useSelector, useDispatch } from 'react-redux';
+import { setMobileOpen } from 'redux/slices/theme';
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
@@ -39,12 +41,16 @@ const UserBox = styled("div")(({ theme }) => ({
   gap: "10px"
 }));
 
-const Navbar = () => {
+const DashboardNavbar = () => {
+
+  const { mobileOpen } = useSelector(state => state.theme);
+  const dispatch = useDispatch();
+
   return (
     <AppBar position="sticky">
       <StyledToolbar>
         <Logo>
-          <DashboardIcon />
+          <DashboardIcon onClick={() => dispatch(setMobileOpen(!mobileOpen))} />
           <Typography variant='h6' sx={{ display: { xs: "none", sm: "block" } }}>Dashboard</Typography>
         </Logo>
         <Search>
@@ -157,4 +163,4 @@ const NavbarAvatar = () => {
   )
 }
 
-export default Navbar
+export default DashboardNavbar

@@ -1,7 +1,8 @@
-import { Box } from "@mui/material"
-import Post from "./Post"
+import { Box } from '@mui/material'
+import { Post } from 'components'
+import React from 'react'
 
-const Feed = () => {
+const DashboardApp = () => {
   return (
     <Box flex={4} p={2}>
       <Post />
@@ -15,4 +16,4 @@ const Feed = () => {
   )
 }
 
-export default Feed
+export default DashboardApp
