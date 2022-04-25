@@ -1,5 +1,5 @@
 import ScrollToTop from 'components/ScrollToTop';
 import Post from 'components/Post';
 import Scrollbar from './Scroolbar';
-
-export { Scrollbar, ScrollToTop, Post };
+import Logo from './Logo';
+export { Scrollbar, ScrollToTop, Post, Logo };

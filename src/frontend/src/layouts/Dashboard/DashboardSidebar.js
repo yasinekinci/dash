@@ -1,9 +1,9 @@
-import { List, ListItem, ListItemButton, ListItemIcon, ListItemText, Switch } from '@mui/material'
+import { List, ListItem, ListItemButton, ListItemIcon, ListItemText, Switch, Typography } from '@mui/material'
 import { Home, Article, Group, Storefront, Person, Settings, AccountBox, ModeNight } from '@mui/icons-material';
 import { Box } from '@mui/system'
 import { useSelector, useDispatch } from 'react-redux';
 import { setMode } from 'redux/slices/theme';
-import { Scrollbar } from 'components';
+import { Logo, Scrollbar } from 'components';
 
 const DashboardSidebar = () => {
 
@@ -24,6 +24,12 @@ const DashboardSidebar = () => {
           flexDirection: 'column'
         }
       }}>
+
+      <Box sx={{ px: 2.5, py: 3, display: 'inline-flex' }}>
+        <Logo sx={{ width: 20, height: 20 }} />
+        <Typography variant='h6' sx={{ display: { xs: "none", sm: "block" } }}>Dashboard</Typography>
+      </Box>
+
       <Box>
         <List>
           <ListItem disablePadding>

@@ -6,13 +6,14 @@ import React from 'react';
 import { Box } from '@mui/system';
 import { useSelector, useDispatch } from 'react-redux';
 import { setMobileOpen } from 'redux/slices/theme';
+import { Logo } from 'components'
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
   justifyContent: "space-between",
 }));
 
-const Logo = styled("div")({
+const LogoStyled = styled("div")({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -49,10 +50,11 @@ const DashboardNavbar = () => {
   return (
     <AppBar position="sticky">
       <StyledToolbar>
-        <Logo>
-          <DashboardIcon onClick={() => dispatch(setMobileOpen(!mobileOpen))} />
+        <LogoStyled>
+          {/* <DashboardIcon onClick={() => dispatch(setMobileOpen(!mobileOpen))} /> */}
+          <Logo />
           <Typography variant='h6' sx={{ display: { xs: "none", sm: "block" } }}>Dashboard</Typography>
-        </Logo>
+        </LogoStyled>
         <Search>
           <InputBase placeholder="Search..." sx={{ width: "100%" }} />
         </Search>
