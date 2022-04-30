@@ -1,11 +1,8 @@
 import styled from '@emotion/styled';
 import { AppBar, Avatar, Badge, Divider, IconButton, InputBase, ListItemIcon, Menu, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material'
-import DashboardIcon from '@mui/icons-material/Dashboard';
 import { Logout, Mail, Notifications, PersonAdd, Settings } from '@mui/icons-material';
 import React from 'react';
 import { Box } from '@mui/system';
-import { useSelector, useDispatch } from 'react-redux';
-import { setMobileOpen } from 'redux/slices/theme';
 import { Logo } from 'components'
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
@@ -43,15 +40,10 @@ const UserBox = styled("div")(({ theme }) => ({
 }));
 
 const DashboardNavbar = () => {
-
-  const { mobileOpen } = useSelector(state => state.theme);
-  const dispatch = useDispatch();
-
   return (
     <AppBar position="sticky">
       <StyledToolbar>
         <LogoStyled>
-          {/* <DashboardIcon onClick={() => dispatch(setMobileOpen(!mobileOpen))} /> */}
           <Logo />
           <Typography variant='h6' sx={{ display: { xs: "none", sm: "block" } }}>Dashboard</Typography>
         </LogoStyled>

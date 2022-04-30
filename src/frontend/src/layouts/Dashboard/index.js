@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Stack, Drawer, Box } from '@mui/material';
-import DashboardSidebar from './DashboardSidebar';
-import DashboardNavbar from './DashboardNavbar';
+import DashboardSidebar from './Sidebar';
+import DashboardNavbar from './Navbar';
 import { setMobileOpen } from 'redux/slices/theme'
 
 const drawerWidth = 280;
