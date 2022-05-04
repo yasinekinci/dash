@@ -8,9 +8,11 @@ import DashboardNavbar from './Navbar';
 import { setMobileOpen } from 'redux/slices/theme'
 
 const drawerWidth = 280;
+const smallDrawerWidth = 88;
+
 const DashboardLayout = (props) => {
     const { window } = props;
-    const { mobileOpen } = useSelector(state => state.theme);
+    const { mobileOpen, sideBarSmallSize } = useSelector(state => state.theme);
     const dispatch = useDispatch();
 
     const handleDrawerToggle = () => {
@@ -23,7 +25,7 @@ const DashboardLayout = (props) => {
         <Box sx={{ display: 'flex' }}>
             <Box component="nav"
                 sx={{
-                    width: { sm: drawerWidth },
+                    width: { sm: sideBarSmallSize ? smallDrawerWidth : drawerWidth },
                     flexShrink: { sm: 0 }
                 }}
                 aria-label="mailbox folders">
@@ -39,7 +41,7 @@ const DashboardLayout = (props) => {
                         display: { xs: 'block', sm: 'none' },
                         '& .MuiDrawer-paper': {
                             boxSizing: 'border-box',
-                            width: drawerWidth
+                            width: sideBarSmallSize ? smallDrawerWidth : drawerWidth
                         },
                     }}>
                     <DashboardSidebar />
@@ -50,8 +52,9 @@ const DashboardLayout = (props) => {
                         display: { xs: 'none', sm: 'block' },
                         '& .MuiDrawer-paper': {
                             boxSizing: 'border-box',
-                            width: drawerWidth,
+                            width: sideBarSmallSize ? smallDrawerWidth : drawerWidth,
                             borderRightStyle: 'dashed',
+                            transition: "all 0.14s ease-in-out"
                         }
                     }}
                     open>

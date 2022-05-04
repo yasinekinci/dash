@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { alpha, Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText, ListSubheader, Switch, useTheme } from '@mui/material'
+import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText, ListSubheader, Switch, Tooltip } from '@mui/material'
 import Iconify from 'components/Iconify';
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,19 +20,19 @@ const ListItemTextStyled = styled(ListItemText)(({ theme }) => ({
 const ListItemStyled = styled(ListItem)(({ theme }) => ({
     "& a": {
         borderRadius: "5px",
-        margin: "2px 15px"
+        margin: "2px 15px",
+        minHeight: "49px",
+        marginLeft: "10px"
     },
     "& a:hover": {
         backgroundColor: "rgba(145, 158, 171, 0.12)",
-        borderRadius: "5px",
-        margin: "2px 15px"
     }
 }));
 
 
 
 const NavSection = () => {
-    const { mode } = useSelector(state => state.theme);
+    const { mode, sideBarSmallSize } = useSelector(state => state.theme);
     const dispatch = useDispatch();
 
     const handleChange = (event) => {
@@ -84,23 +84,25 @@ const NavSection = () => {
         <Box>
             <List subheader={<ListSubheader>General</ListSubheader>}>
                 {navConfig.map(nav => {
-                    return <ListItemStyled disablePadding sx={nav.title == "Home Page" ? activeRootStyle : null}>
+                    return (<ListItemStyled disablePadding sx={nav.title == "Home Page" ? activeRootStyle : null}>
                         <ListItemButton component={Link} to={nav.href} key={nav.title} >
-                            <ListItemIconStyled >
-                                <Iconify icon={nav.icon} />
-                            </ListItemIconStyled>
-                            <ListItemTextStyled component="span" primary={nav.title} />
+                            <Tooltip title={nav.title}>
+                                <ListItemIconStyled >
+                                    <Iconify icon={nav.icon} />
+                                </ListItemIconStyled>
+                            </Tooltip>
+                            {!sideBarSmallSize && <ListItemTextStyled component="span" primary={nav.title} />}
                         </ListItemButton>
-                    </ListItemStyled>
+                    </ListItemStyled>)
                 })}
-                <ListItem disablePadding>
+                {!sideBarSmallSize && <ListItem disablePadding>
                     <ListItemButton >
                         <ListItemIconStyled>
                             <Iconify icon="ic:baseline-mode-night" />
                         </ListItemIconStyled>
                         <Switch checked={mode === "dark"} onChange={handleChange} />
                     </ListItemButton>
-                </ListItem>
+                </ListItem>}
             </List>
         </Box >
     )

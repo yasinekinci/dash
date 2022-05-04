@@ -1,12 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    mode: "light",
-    mobileOpen: false
+    mode: "dark",
+    mobileOpen: false,
+    sideBarSmallSize: false
 }
 
 const theme = createSlice({
-    name: 'auth',
+    name: 'theme',
     initialState,
     reducers: {
         setMode: (state, { payload }) => {
@@ -15,8 +16,11 @@ const theme = createSlice({
         setMobileOpen: (state, { payload }) => {
             state.mobileOpen = payload;
         },
+        setSideBarSmallSize: (state, { payload }) => {
+            state.sideBarSmallSize = payload;
+        }
     }
 })
 
-export const { setMode, setMobileOpen } = theme.actions;
+export const { setMode, setMobileOpen, setSideBarSmallSize } = theme.actions;
 export default theme.reducer;
