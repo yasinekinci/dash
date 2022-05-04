@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { AppBar, Avatar, Badge, Divider, IconButton, InputBase, ListItemIcon, Menu, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material'
+import { AppBar, Avatar, Badge, Divider, IconButton, InputBase, ListItemIcon, Menu, MenuItem, Toolbar, Tooltip, Typography, useTheme } from '@mui/material'
 import { Logout, Mail, Notifications, PersonAdd, Settings } from '@mui/icons-material';
 import React from 'react';
 import { Box } from '@mui/system';
@@ -18,7 +18,7 @@ const LogoStyled = styled("div")({
 });
 
 const Search = styled("div")(({ theme }) => ({
-  backgroundColor: "white",
+  backgroundColor: "rgba(145, 158, 171, 0.12)",  
   padding: "0 10px",
   borderRadius: theme.shape.borderRadius,
   width: "50%"
@@ -40,6 +40,9 @@ const UserBox = styled("div")(({ theme }) => ({
 }));
 
 const DashboardNavbar = () => {
+
+  const theme = useTheme();
+
   return (
     <AppBar position="sticky">
       <StyledToolbar>
