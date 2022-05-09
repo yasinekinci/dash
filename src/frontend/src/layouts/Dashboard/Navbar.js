@@ -4,6 +4,7 @@ import { Logout, Mail, Notifications, PersonAdd, Settings } from '@mui/icons-mat
 import React from 'react';
 import { Box } from '@mui/system';
 import { Logo } from 'components'
+import { Link } from 'react-router-dom';
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
@@ -18,7 +19,7 @@ const LogoStyled = styled("div")({
 });
 
 const Search = styled("div")(({ theme }) => ({
-  backgroundColor: "rgba(145, 158, 171, 0.12)",  
+  backgroundColor: "rgba(145, 158, 171, 0.12)",
   padding: "0 10px",
   borderRadius: theme.shape.borderRadius,
   width: "50%"
@@ -148,10 +149,12 @@ const NavbarAvatar = () => {
           Settings
         </MenuItem>
         <MenuItem>
-          <ListItemIcon>
-            <Logout fontSize="small" />
-          </ListItemIcon>
-          Logout
+          <Link to="/login">
+            <ListItemIcon>
+              <Logout fontSize="small" />
+            </ListItemIcon>
+            Logout
+          </Link>
         </MenuItem>
       </Menu>
 

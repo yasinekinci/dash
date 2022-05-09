@@ -42,6 +42,7 @@ const NavSection = () => {
     const activeRootStyle = {
         "& a": {
             backgroundColor: "rgba(145, 158, 171, 0.12)",
+            color: "#FF3030",
             borderRadius: "5px",
             margin: "2px 15px"
         }
@@ -88,7 +89,7 @@ const NavSection = () => {
                         <ListItemButton component={Link} to={nav.href} key={nav.title} >
                             <Tooltip title={nav.title}>
                                 <ListItemIconStyled >
-                                    <Iconify icon={nav.icon} />
+                                    <Iconify icon={nav.icon} sx={nav.title == "Home Page" ? { color: "#FF3030" } : null} />
                                 </ListItemIconStyled>
                             </Tooltip>
                             {!sideBarSmallSize && <ListItemTextStyled component="span" primary={nav.title} />}

@@ -5,7 +5,7 @@ const Post = () => {
     return (
         <Card sx={{ margin: 5 }}>
             <CardHeader
-                avatar={<Avatar sx={{ bgcolor: "red" }} aria-label="recipe">R</Avatar>}
+                avatar={<Avatar sx={{ bgcolor: "#FF3030" }} aria-label="recipe">R</Avatar>}
                 action={
                     <IconButton aria-label="settings">
                         <MoreVert />
@@ -23,7 +23,7 @@ const Post = () => {
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
-                <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite sx={{ color: "red" }} />} />
+                <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite sx={{ color: "#FF3030" }} />} />
 
                 <IconButton aria-label="share">
                     <Share />
