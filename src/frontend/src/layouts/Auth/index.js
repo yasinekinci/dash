@@ -2,11 +2,10 @@ import PropTypes from 'prop-types';
 // material
 import { styled } from '@mui/material/styles';
 import { Typography } from '@mui/material';
-import { Logo } from 'components';
+
 // components
+import { Logo } from 'components';
 
-
-// ----------------------------------------------------------------------
 
 const HeaderStyle = styled('header')(({ theme }) => ({
   top: 0,
@@ -24,7 +23,6 @@ const HeaderStyle = styled('header')(({ theme }) => ({
   }
 }));
 
-// ----------------------------------------------------------------------
 
 AuthLayout.propTypes = {
   children: PropTypes.node

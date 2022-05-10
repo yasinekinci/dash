@@ -4,7 +4,6 @@ import React from 'react';
 // material
 import { Box } from '@mui/material';
 
-// ----------------------------------------------------------------------
 
 const Page = React.forwardRef(({ children, title = '', ...other }, ref) => (
   <Box ref={ref} {...other}>

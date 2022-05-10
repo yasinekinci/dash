@@ -7,7 +7,7 @@ import Page from 'pages/Page';
 import AuthSocial from './AuthSocial';
 import LoginForm from './LoginForm';
 
-// ----------------------------------------------------------------------
+
 
 const RootStyle = styled(Page)(({ theme }) => ({
   [theme.breakpoints.up('md')]: {
@@ -34,7 +34,7 @@ const ContentStyle = styled('div')(({ theme }) => ({
   padding: theme.spacing(12, 0)
 }));
 
-// ----------------------------------------------------------------------
+
 
 export default function Login() {
   return (

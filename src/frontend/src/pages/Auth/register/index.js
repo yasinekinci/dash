@@ -9,7 +9,7 @@ import Page from 'pages/Page';
 import AuthSocial from '../login/AuthSocial';
 import RegisterForm from './RegisterForm';
 
-// ----------------------------------------------------------------------
+
 
 const RootStyle = styled(Page)(({ theme }) => ({
   [theme.breakpoints.up('md')]: {
@@ -36,7 +36,7 @@ const ContentStyle = styled('div')(({ theme }) => ({
   padding: theme.spacing(12, 0)
 }));
 
-// ----------------------------------------------------------------------
+
 
 export default function Register() {
   return (

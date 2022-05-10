@@ -8,7 +8,7 @@ import { LoadingButton } from '@mui/lab';
 // component
 import Iconify from 'components/Iconify';
 
-// ----------------------------------------------------------------------
+
 
 export default function RegisterForm() {
     const navigate = useNavigate();
