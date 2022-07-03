@@ -14,10 +14,9 @@ import {
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import Iconify from 'components/Iconify';
+import api from 'utils/api';
+import { storeAuthTokenInfo } from 'utils/authToken';
 // component
-
-
-
 
 export default function LoginForm() {
     const navigate = useNavigate();
@@ -35,8 +34,12 @@ export default function LoginForm() {
             remember: true
         },
         validationSchema: LoginSchema,
-        onSubmit: () => {
-            navigate('/dashboard', { replace: true });
+        onSubmit: async (values) => {
+            const { success, data } = await api.post('Auth/Login', values)
+            if (success) {
+                storeAuthTokenInfo(data);
+                navigate('/dashboard', { replace: true });
+            }
         }
     });
 
