@@ -47,9 +47,9 @@ namespace Api.Controllers
             var result = _authService.CreateAccessToken(register.Data);
             if (!result.Success)
             {
-                return Ok(result);
+                return BadRequest(result);
             }
-            return BadRequest(result);
+            return Ok(result);
         }
 
     }
