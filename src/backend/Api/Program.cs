@@ -84,6 +84,7 @@ builder.Services.AddSwaggerGen(c =>
                 });
 });
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+builder.Services.AddCors();
 
 builder.Services.AddDbContext<DashboardDbContext>(options =>
 {
@@ -105,6 +106,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 app.UseHttpsRedirection();
 app.UseCustomException();
 app.UseAuthentication();
