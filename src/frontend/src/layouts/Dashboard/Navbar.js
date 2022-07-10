@@ -4,7 +4,9 @@ import { Logout, Mail, Notifications, PersonAdd, Settings } from '@mui/icons-mat
 import React from 'react';
 import { Box } from '@mui/system';
 import { Logo } from 'components'
-import { Link } from 'react-router-dom';
+import { logout } from 'redux/slices/auth';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
@@ -68,6 +70,8 @@ const DashboardNavbar = () => {
 }
 
 const NavbarAvatar = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = anchorEl;
 
@@ -78,6 +82,12 @@ const NavbarAvatar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   }
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate('/login', { replace: true });
+  }
+
   return (
     <UserBox>
       <Tooltip title="Account settings">
@@ -88,7 +98,7 @@ const NavbarAvatar = () => {
           aria-haspopup="true"
           aria-expanded={open ? 'true' : undefined}
           sx={{ ml: 2 }}>
-          <Avatar sx={{ width: 30, height: 30 }} alt="Yasin Ekinci" src="https://media-exp1.licdn.com/dms/image/C4E03AQEoBTw_oOJqRA/profile-displayphoto-shrink_800_800/0/1614165387198?e=1655942400&v=beta&t=6wgMA7gMFa35pFrOf4Y-cQ3NFl8NvM8Ei_pRxCgKDAY" />
+          <Avatar sx={{ width: 30, height: 30 }} alt="Yasin Ekinci" src="https://source.unsplash.com/random/300%C3%97300/?profile" />
         </IconButton>
       </Tooltip>
       <Typography variant="span">Yasin</Typography>
@@ -145,13 +155,11 @@ const NavbarAvatar = () => {
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem>
-          <Link to="/login">
-            <ListItemIcon>
-              <Logout fontSize="small" />
-            </ListItemIcon>
-            Logout
-          </Link>
+        <MenuItem onClick={handleLogout}>
+          <ListItemIcon>
+            <Logout fontSize="small" />
+          </ListItemIcon>
+          Logout
         </MenuItem>
       </Menu>
 

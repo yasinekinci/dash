@@ -6,7 +6,6 @@ import { Link, Stack, Checkbox, TextField, IconButton, InputAdornment, FormContr
 import { LoadingButton } from '@mui/lab';
 import Iconify from 'components/Iconify';
 import api from 'utils/api';
-import { storeAuthToken } from 'utils/authToken';
 import { login } from 'redux/slices/auth';
 import { useDispatch } from 'react-redux';
 
@@ -30,8 +29,7 @@ export default function LoginForm() {
         onSubmit: async (values) => {
             const { success, data } = await api.post('Auth/Login', values)
             if (success) {
-                dispatch(login(data));
-                storeAuthToken(data.token.token);
+                dispatch(login(data));                
                 navigate('/dashboard', { replace: true });
             }
         }

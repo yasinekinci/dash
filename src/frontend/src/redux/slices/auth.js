@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { removeStoredAuthToken, storeAuthToken } from 'utils/authToken';
 
 const initialState = {
     token: null,
@@ -12,9 +13,11 @@ const auth = createSlice({
         login: (state, { payload }) => {
             state.user = payload.user;
             state.token = payload.token;
+            storeAuthToken(payload.token.token);
         },
         logout: (state) => {
             state.user = null;
+            removeStoredAuthToken();
         }
     }
 })
