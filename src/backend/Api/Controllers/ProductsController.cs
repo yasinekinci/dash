@@ -19,9 +19,9 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetAllProduct()
+        public async Task<IActionResult> GetAllAsync()
         {
-            return Ok(await _productService.GetAllAsync());
+            return Ok(CreateActionDataResult(await _productService.GetAllAsync()));
         }
 
         [HttpPost("Add")]
