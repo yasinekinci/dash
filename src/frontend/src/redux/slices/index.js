@@ -1,3 +1,5 @@
 import theme from './theme'
+import auth from './auth'
 
-export default { theme }
+const AllSlices = { theme, auth };
+export default AllSlices;

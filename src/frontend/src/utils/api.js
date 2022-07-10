@@ -30,10 +30,12 @@ const api = (method, url, variables) => {
   });
 }
 
-export default {
+const HttpMethods = {
   get: (url, variables) => api('get', url, variables),
   post: (url, variables) => api('post', url, variables),
   put: (url, variables) => api('put', url, variables),
   patch: (url, variables) => api('patch', url, variables),
   delete: (url, variables) => api('delete', url, variables)
 };
+
+export default HttpMethods;
