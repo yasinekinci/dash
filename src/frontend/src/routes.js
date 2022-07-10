@@ -1,6 +1,6 @@
 import DashboardLayout from "layouts/Dashboard";
 import LogoOnlyLayout from "layouts/LogoOnlyLayout";
-import DashboardApp from "pages/DashboardApp";
+import Home from "pages/Home";
 import Login from "pages/Auth/login";
 import NotFound from "pages/Page404";
 import { Navigate, useRoutes } from "react-router-dom";
@@ -12,7 +12,7 @@ export default function Router() {
             path: '/dashboard',
             element: <DashboardLayout />,
             children: [
-                { path: 'app', element: <DashboardApp /> },
+                { path: '', element: <Home /> },
                 // { path: 'user', element: <User /> },
                 // { path: 'products', element: <Products /> },
                 // { path: 'blog', element: <Blog /> }
@@ -22,7 +22,7 @@ export default function Router() {
             path: '/',
             element: <LogoOnlyLayout />,
             children: [
-                { path: '/', element: <Navigate to="/dashboard/app" /> },
+                { path: '/', element: <Navigate to="/dashboard" /> },
                 { path: 'login', element: <Login /> },
                 { path: 'register', element: <Register /> },
                 { path: '404', element: <NotFound /> },

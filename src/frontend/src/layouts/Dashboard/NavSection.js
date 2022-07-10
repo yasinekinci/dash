@@ -50,7 +50,7 @@ const NavSection = () => {
 
     const navConfig = [
         {
-            href: "/dashboard/app",
+            href: "/dashboard",
             title: "Home Page",
             icon: "ic:baseline-speed"
         },
