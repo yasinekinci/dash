@@ -2,23 +2,16 @@ import * as Yup from 'yup';
 import { useState } from 'react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useFormik, Form, FormikProvider } from 'formik';
-// material
-import {
-    Link,
-    Stack,
-    Checkbox,
-    TextField,
-    IconButton,
-    InputAdornment,
-    FormControlLabel
-} from '@mui/material';
+import { Link, Stack, Checkbox, TextField, IconButton, InputAdornment, FormControlLabel } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import Iconify from 'components/Iconify';
 import api from 'utils/api';
-import { storeAuthTokenInfo } from 'utils/authToken';
-// component
+import { storeAuthToken } from 'utils/authToken';
+import { login } from 'redux/slices/auth';
+import { useDispatch } from 'react-redux';
 
 export default function LoginForm() {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
 
@@ -37,7 +30,8 @@ export default function LoginForm() {
         onSubmit: async (values) => {
             const { success, data } = await api.post('Auth/Login', values)
             if (success) {
-                storeAuthTokenInfo(data);
+                dispatch(login(data));
+                storeAuthToken(data.token.token);
                 navigate('/dashboard', { replace: true });
             }
         }
