@@ -1,3 +1,4 @@
+using Core.Domain;
 using Domain.Models.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -25,7 +26,11 @@ namespace Api.Controllers
             var token = _authService.CreateAccessToken(userToLogin.Data);
             if (token.Success)
             {
-                return Ok(token);
+                return Ok(CreateActionDataResult(new UserWithTokenModel()
+                {
+                    User = userToLogin.Data,
+                    Token = token.Data
+                }));
             }
             return BadRequest(token);
         }

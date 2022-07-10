@@ -9,7 +9,11 @@ namespace Api.Utilities.Mapping
     {
         public MapProfile()
         {
-            CreateMap<User, UserModel>().ReverseMap();
+            CreateMap<User, UserModel>()
+            .ForMember(x => x.PasswordSalt, opt => opt.Ignore())
+            .ForMember(x => x.PasswordHash, opt => opt.Ignore())
+            .ForMember(x => x.Password, opt => opt.Ignore())
+            .ReverseMap();
             CreateMap<OperationClaim, OperationClaimModel>().ReverseMap();
             CreateMap<UserOperationClaim, UserOperationClaimModel>().ReverseMap();
             CreateMap<Product, ProductModel>().ReverseMap();
