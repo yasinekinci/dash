@@ -45,7 +45,7 @@ const DashboardSidebar = () => {
       <Box sx={{ mb: 5, mx: 2.5 }}>
         <Link underline="none" component={RouterLink} to="#">
           <AccountStyle sideBarSmallSize={sideBarSmallSize}>
-            <Avatar src={"https://media-exp1.licdn.com/dms/image/C4E03AQEoBTw_oOJqRA/profile-displayphoto-shrink_800_800/0/1614165387198?e=1655942400&v=beta&t=6wgMA7gMFa35pFrOf4Y-cQ3NFl8NvM8Ei_pRxCgKDAY"} alt="photoURL" />
+            <Avatar src={"https://source.unsplash.com/random/300%C3%97300/?profile"} alt="photoURL" />
             {!sideBarSmallSize && <Box sx={{ ml: 2 }}>
               <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
                 Yasin Ekinci
