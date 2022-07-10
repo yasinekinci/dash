@@ -85,11 +85,11 @@ const NavSection = () => {
         <Box>
             <List subheader={<ListSubheader>General</ListSubheader>}>
                 {navConfig.map(nav => {
-                    return (<ListItemStyled disablePadding sx={nav.title == "Home Page" ? activeRootStyle : null}>
+                    return (<ListItemStyled disablePadding sx={nav.title === "Home Page" ? activeRootStyle : null}>
                         <ListItemButton component={Link} to={nav.href} key={nav.title} >
                             <Tooltip title={nav.title}>
                                 <ListItemIconStyled >
-                                    <Iconify icon={nav.icon} sx={nav.title == "Home Page" ? { color: "#FF3030" } : null} />
+                                    <Iconify icon={nav.icon} sx={nav.title === "Home Page" ? { color: "#FF3030" } : null} />
                                 </ListItemIconStyled>
                             </Tooltip>
                             {!sideBarSmallSize && <ListItemTextStyled component="span" primary={nav.title} />}

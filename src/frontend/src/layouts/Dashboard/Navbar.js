@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { AppBar, Avatar, Badge, Divider, IconButton, InputBase, ListItemIcon, Menu, MenuItem, Toolbar, Tooltip, Typography, useTheme } from '@mui/material'
+import { AppBar, Avatar, Badge, Divider, IconButton, InputBase, ListItemIcon, Menu, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material'
 import { Logout, Mail, Notifications, PersonAdd, Settings } from '@mui/icons-material';
 import React from 'react';
 import { Box } from '@mui/system';
@@ -41,9 +41,6 @@ const UserBox = styled("div")(({ theme }) => ({
 }));
 
 const DashboardNavbar = () => {
-
-  const theme = useTheme();
-
   return (
     <AppBar position="sticky">
       <StyledToolbar>
