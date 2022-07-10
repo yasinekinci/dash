@@ -1,11 +1,9 @@
 import PropTypes from 'prop-types';
-// material
 import { styled } from '@mui/material/styles';
 import { Typography } from '@mui/material';
-
-// components
 import { Logo } from 'components';
-
+import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 
 const HeaderStyle = styled('header')(({ theme }) => ({
   top: 0,
@@ -23,12 +21,18 @@ const HeaderStyle = styled('header')(({ theme }) => ({
   }
 }));
 
-
 AuthLayout.propTypes = {
   children: PropTypes.node
 };
 
 export default function AuthLayout({ children }) {
+
+  const { user } = useSelector(state => state.auth);
+
+  if (user) {
+    return <Navigate to="/dashboard" replace={true} />
+  }
+
   return (
     <HeaderStyle>
       <Logo />
