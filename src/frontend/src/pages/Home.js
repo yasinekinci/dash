@@ -18,6 +18,7 @@ const Home = () => {
 
   return (
     <Box flex={4} p={2}>
+      <Post />
       {
         products.map(x => {
           return <Post />

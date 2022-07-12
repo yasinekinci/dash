@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Navigate, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Stack, Drawer, Box } from '@mui/material';
 import DashboardSidebar from './Sidebar';
@@ -12,11 +12,7 @@ const smallDrawerWidth = 88;
 
 const DashboardLayout = ({ window }) => {
     const dispatch = useDispatch();
-    const { theme: { mobileOpen, sideBarSmallSize }, auth: { user } } = useSelector(state => state);
-    
-    if (!user) {
-        return <Navigate to="/login" replace={true} />
-    }
+    const { mobileOpen, sideBarSmallSize } = useSelector(state => state.theme);
 
     const handleDrawerToggle = () => {
         dispatch(setMobileOpen(!mobileOpen));
