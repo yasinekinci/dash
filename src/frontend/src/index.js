@@ -6,14 +6,18 @@ import store from './redux/store';
 import App from './App';
 import { HelmetProvider } from 'react-helmet-async';
 import 'simplebar/src/simplebar.css';
+import { PersistGate } from 'redux-persist/integration/react';
+import persistStore from 'redux-persist/es/persistStore';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
-    <HelmetProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </HelmetProvider>
+    <PersistGate loading={null} persistor={persistStore(store)}>
+      <HelmetProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </HelmetProvider>
+    </PersistGate>
   </Provider>
 );
