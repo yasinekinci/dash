@@ -5,7 +5,7 @@
       // Use IntelliSense to find out which attributes exist for C# debugging
       // Use hover for the description of the existing attributes
       // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
-      "name": ".NET Core Launch (web)",
+      "name": "Backend",
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
@@ -27,12 +27,7 @@
       }
     },
     {
-      "name": ".NET Core Attach",
-      "type": "coreclr",
-      "request": "attach"
-    },
-    {
-      "name": "Chrome",
+      "name": "Frontend",
       "type": "chrome",
       "request": "launch",
       "preLaunchTask": "npm: start - src/frontend",
@@ -43,11 +38,9 @@
       }
     },
     {
-      "command": "npm start",
-      "name": "Frontend",
-      "request": "launch",
-      "type": "node-terminal",
-      "cwd": "${workspaceFolder}/src/frontend/"
+      "name": ".NET Core Attach",
+      "type": "coreclr",
+      "request": "attach"
     }
   ]
 }
