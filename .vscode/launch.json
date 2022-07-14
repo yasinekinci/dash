@@ -32,7 +32,7 @@
       "request": "launch",
       "preLaunchTask": "npm: start - src/frontend",
       "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}/src",
+      "webRoot": "${workspaceFolder}/src/frontend",
       "sourceMapPathOverrides": {
         "webpack:///src/*": "${webRoot}/*"
       }
