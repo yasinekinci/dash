@@ -17,7 +17,7 @@ const AuthProvider = ({ children }) => {
 }
 
 const getRedirectPage = (user, pathName) => {
-    if (user && !pathName.startsWith('/dashboard')) {
+    if (user && !pathName.startsWith('/dashboard') && pathName !== "/404") {
         return "/dashboard";
     } else if (!user && (pathName.startsWith('/dashboard') || pathName === '/')) {
         return "/login";
