@@ -28,7 +28,7 @@
     "simplebar-react": "^2.3.7",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11",
-    "components":"file:../components"
+    "y-components":"file:../components"
   },
   "scripts": {
     "start": "react-scripts start",

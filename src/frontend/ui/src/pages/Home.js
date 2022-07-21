@@ -2,7 +2,7 @@ import { Box } from '@mui/material'
 import { Post } from 'components'
 import React, { useEffect, useState } from 'react'
 import api from 'utils/api';
-import { SharedComp } from 'components/src/';
+import { Button } from 'y-components'
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -19,7 +19,7 @@ const Home = () => {
 
   return (
     <Box flex={4} p={2}>
-      <SharedComp />
+      <Button label='Yasin' />
       <Post />
       {
         products.map(x => {
