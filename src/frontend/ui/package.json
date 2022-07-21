@@ -13,6 +13,7 @@
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
+    "@yasinekinci/y-components": "^0.0.2",
     "axios": "^0.27.2",
     "formik": "^2.2.9",
     "framer-motion": "^6.3.3",
@@ -27,8 +28,7 @@
     "redux-thunk": "^2.4.1",
     "simplebar-react": "^2.3.7",
     "web-vitals": "^2.1.4",
-    "yup": "^0.32.11",
-    "y-components":"file:../components"
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",
