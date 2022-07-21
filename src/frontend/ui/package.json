@@ -27,7 +27,8 @@
     "redux-thunk": "^2.4.1",
     "simplebar-react": "^2.3.7",
     "web-vitals": "^2.1.4",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "y-components":"file:../components"
   },
   "scripts": {
     "start": "react-scripts start",

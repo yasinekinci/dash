@@ -42,72 +42,84 @@ public partial class GenericRepository<TEntity> : IGenericRepository<TEntity> wh
     }
     public TEntity Insert(TEntity entity)
     {
+        entity.CreatedDate = DateTime.Now;
         _dbSet.Add(entity);
         _context.SaveChanges();
         return entity;
     }
     public IEnumerable<TEntity> Insert(IEnumerable<TEntity> entities)
     {
+        entities.ToList().ForEach(x => x.UpdatedDate = DateTime.Now);
         _dbSet.AddRange(entities);
         _context.SaveChanges();
         return entities;
     }
     public async Task<TEntity> InsertAsync(TEntity entity)
     {
+        entity.CreatedDate = DateTime.Now;
         await _dbSet.AddAsync(entity);
         await _context.SaveChangesAsync();
         return entity;
     }
     public async Task<IEnumerable<TEntity>> InsertAsync(IEnumerable<TEntity> entities)
     {
+        entities.ToList().ForEach(x => x.UpdatedDate = DateTime.Now);
         await _dbSet.AddRangeAsync(entities);
         await _context.SaveChangesAsync();
         return entities;
     }
     public TEntity Update(TEntity entity)
     {
+        entity.UpdatedDate = DateTime.Now;
         _dbSet.Update(entity);
         _context.SaveChanges();
         return entity;
     }
     public async Task<TEntity> UpdateAsync(TEntity entity)
     {
+        entity.UpdatedDate = DateTime.Now;
         _dbSet.Update(entity);
         await _context.SaveChangesAsync();
         return entity;
     }
     public IEnumerable<TEntity> Update(IEnumerable<TEntity> entities)
     {
+        entities.ToList().ForEach(x => x.UpdatedDate = DateTime.Now);
         _dbSet.UpdateRange(entities);
         _context.SaveChanges();
         return entities;
     }
     public async Task<IEnumerable<TEntity>> UpdateAsync(IEnumerable<TEntity> entities)
     {
+        entities.ToList().ForEach(x => x.UpdatedDate = DateTime.Now);
         _dbSet.UpdateRange(entities);
         await _context.SaveChangesAsync();
         return entities;
     }
     public TEntity Remove(TEntity entity)
     {
+        entity.UpdatedDate = DateTime.Now;
         _dbSet.Remove(entity);
         _context.SaveChanges();
         return entity;
     }
     public async Task<TEntity> RemoveAsync(TEntity entity)
     {
+        entity.UpdatedDate = DateTime.Now;
         _dbSet.Remove(entity);
         await _context.SaveChangesAsync();
         return entity;
     }
     public IEnumerable<TEntity> Remove(IEnumerable<TEntity> entities)
     {
+        entities.ToList().ForEach(x => x.UpdatedDate = DateTime.Now);
         _dbSet.RemoveRange(entities);
         _context.SaveChanges();
         return entities;
     }
     public async Task<IEnumerable<TEntity>> RemoveAsync(IEnumerable<TEntity> entities)
     {
+        entities.ToList().ForEach(x => x.UpdatedDate = DateTime.Now);
         _dbSet.RemoveRange(entities);
         await _context.SaveChangesAsync();
         return entities;
