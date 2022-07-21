@@ -1,9 +1,13 @@
 {
-  "name": "y-components",
+  "name": "@yasinekinci/y-components",
   "version": "0.0.1",
   "description": "A dashboard react component library",
   "scripts": {
     "rollup": "rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yasinekinci/dash.git"
   },
   "author": "Yasin Ekinci",
   "license": "ISC",
@@ -23,5 +27,8 @@
   "files": [
     "dist"
   ],
-  "types": "dist/index.d.ts"
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/yasinekinci"
+  }
 }
