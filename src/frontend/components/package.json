@@ -1,7 +1,7 @@
 {
   "name": "y-components",
   "version": "0.0.1",
-  "description": "A simple template for a custom React component library",
+  "description": "A dashboard react component library",
   "scripts": {
     "rollup": "rollup -c"
   },
