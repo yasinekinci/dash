@@ -1,6 +1,6 @@
 {
   "name": "@yasinekinci/y-components",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "description": "A dashboard react component library",
   "scripts": {
     "rollup": "rollup -c",
@@ -33,7 +33,7 @@
     "rollup": "^2.77.0",
     "rollup-plugin-dts": "^4.2.2",
     "tslib": "^2.4.0",
-    "typescript": "^4.7.4"
+    "typescript": "^5.0.2"
   },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
